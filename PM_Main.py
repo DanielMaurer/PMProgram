@@ -27,4 +27,23 @@ class PMProgram(tk.Tk): # inherited Tk from tkinter
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
+        self.frames = {} # frames that will be a list that contains the windows of the application
+
+        # Function that takes the pages and adds them to the frames list
+        for f in (MainPage, PageOne, PageTwo, PageThree):
+            frame = f(container, self) # This defines the frame and gives it access to the contanier
+            self.frames[f] = frame
+            frame.grid(row = 0, column = 0, sticky='nsew') # sticky defines the directions the frame should stretch to
+
+        self.show_frrame(MainPage):
+
+    def show_frame(self, key):
+
+        frame = self.frames[key] # key will tell us what frame we are in
+        frame.tkraise() # brings the desired frame to be viewed
+
+
+class MainPage(tk.Frame):
+    
+
         
